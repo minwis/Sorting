@@ -1,37 +1,38 @@
 public class Quick_sort {
 
     public static int[] QuickSort(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;//특정 부분을 정렬
+
         int pivot_position = (arr.length - 1) / 2;
         int pivot = arr[pivot_position];
         arr[pivot_position] = arr[arr.length - 1];
         arr[arr.length - 1] = pivot;
-        int i = 0, j = 0;
+        int i = 0, j = arr.length - 2;
 
-        while ( i + j < arr.length / 2) {
-            while ( arr[i] < pivot ) { //pivot보다 큰 수를 뒤로 보내야 함.
+        do {
+            while ( arr[i] < pivot ) {
                 i++;
             }
-            while ( arr[arr.length - 2 - j] >= pivot ) {
-                j++;
+             while ( j > 0 && arr[j] >= pivot ) {
+                 j--;
             }
+             if ( j <= i ) {
+                 break;
+             }
             int a = arr[i];
-            arr[i] = arr[arr.length - 2 - j];
-            arr[arr.length - 2 - j] = a;
-        }
+            arr[i] = arr[j];
+            arr[j] = a;
+        } while ( i <= arr.length - 2 && j >= 1 );
 
-        for ( int I = 0; I < arr.length; I++ ) {
-            if ( arr[I] > pivot ) {
-                int backup = arr[I];
-                arr[I] = pivot;
-                arr[arr.length - 1] = backup;
-                break;
-            }
-        }
+        int backup = arr[i];
+        arr[i] = pivot;
+        arr[arr.length - 1] = backup;
         return arr;
     }
 
     public static void main(String args[]) {
-        int[] arr = new int[] {8,1,6,9,6,3,5,2,7,0};
+        int[] arr = new int[] {8,1,6,0,0,3,5,2,7,6};
         System.out.println("Input: \n8169635270\n");
         System.out.println("Purposed to: \n2153066879\n\nOutput:");
         arr = QuickSort(arr);
