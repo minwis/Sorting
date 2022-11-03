@@ -1,18 +1,15 @@
 public class Quick_sort {
-
-    public static int[] arr = Compare.arr;
-    public static void QuickSort(int start, int end) {
+    public static void QuickSort(int[] arr, int start, int end) {
         if ( end - start <= 0 ) {
             return;
         }
-        //identify pivot and move pivot to the place of arr.length - 1.
         int pivot_position = (end + start) / 2;
+
         int pivot = arr[pivot_position];
         arr[pivot_position] = arr[end];
         arr[end] = pivot;
         int i = 0, j = end - 1;
 
-        //change positions
         do {
             while ( arr[i] < pivot ) {
                 i++;
@@ -32,24 +29,7 @@ public class Quick_sort {
         arr[i] = pivot;
         arr[end] = backup;
 
-
-        QuickSort(start, pivot_position - 1); //pivot보다 작은 숫자들
-        QuickSort(pivot_position + 1, end); //pivot보다 큰 숫자들
+        QuickSort(arr, start, pivot_position - 1);
+        QuickSort(arr, pivot_position + 1, end);
     }
-
-    public static void print(int[] arr) {
-        for ( int i = 0; i < arr.length; i++ ) {
-            System.out.print(arr[i]);
-            if ( i != arr.length - 1 ) {
-                System.out.print(",");
-            }
-        }
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-        QuickSort(0, arr.length-1);
-        print(arr);
-    }
-
 }
