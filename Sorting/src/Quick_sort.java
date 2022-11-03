@@ -1,7 +1,6 @@
 public class Quick_sort {
 
-    public static int[] arr = new int[] {9,-3,5,2,3,8,-6,1,6};
-    public static boolean check = false;
+    public static int[] arr = Compare.arr;
     public static void QuickSort(int start, int end) {
         if ( end - start <= 0 ) {
             return;

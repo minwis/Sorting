@@ -1,11 +1,12 @@
 public class test {
 
-    public static void main(String[] args) {
-        int min = -9;
-        int max = 9;
+    public static void main(String[] args) throws InterruptedException {
+        long start = System.nanoTime();
 
-        for ( int i = 0; i < 10; i++ ) {
-            System.out.println((int)Math.floor(Math.random()*(max-min+1)+min));
-        }
+        Thread.sleep(3000);
+
+        long duration = (System.nanoTime() - start) / 1000000;
+
+        System.out.println(duration + "ms");
     }
 }
