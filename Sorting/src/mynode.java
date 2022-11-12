@@ -1,10 +1,9 @@
-public class mynode { //each node, such as 4, 5, 8, blah blah
+public class mynode {
+    public int v;
+    public mynode left_node;
+    public mynode right_node;
 
-    public static String self_node;
-    public static String left_node;
-    public static String right_node;
-
-    public static void main() {
-
+    public mynode (int v_) {
+        v = v_;
     }
 }
